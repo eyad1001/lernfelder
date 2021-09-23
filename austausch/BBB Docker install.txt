@@ -1,0 +1,62 @@
+https://goneuland.de/big-blue-button-docker-unter-debian-10-installieren/
+
+
+apt --purge remove apache2					apache 2 deinstalliert
+apt autoremove	
+
+apt install docker.io docker-compose				docker installieren
+	
+mkdir -p /opt/containers/					ordner erstellen für BBB
+cd /opt/containers						in den ordner gehen
+
+apt install git							git installieren für den nächsten link
+
+git clone --recurse-submodules https://github.com/alangecker/bigbluebutton-docker.git bbb-docker
+
+cd bbb-docker							ins verzeichnis bbb-docker
+
+apt install curl						accept	(installieren von curl)
+
+./scripts/setup							skript ausführen
+
+y								die eingaben für das skript 
+y
+y
+IP-Adresse eingeben
+n
+y
+y
+
+./scripts/compose up -d						skript composen
+
+-lange warten da 10gb runtergeladen werden (15-30 min)
+
+
+dann firefox öffnen und das eingeben:
+https://IP-Adresse/b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
