@@ -1,0 +1,28 @@
+"" jj anstelle von esc um den I-Modus zu verlassen
+inoremap jj <esc>
+
+" Fuegt vor der Zeile ein # ein
+nmap  ##   vip:s/^/#<space>/<CR>
+vmap  ##      :s/^/#<space>/<CR>
+
+" Macht aus Tabstop Leerzeichen
+set expandtab
+
+" Ein Tab = 4 Leerzeichen
+set tabstop=4
+
+"" Statusline
+:map <F2> :set laststatus=2<CR>
+:set statusline=[%n]\ %<%f\ %((%1*%M%*%R%Y)%)\ %=%-19(\Zeile\ [%3l/%3L]\ Spalte\ [%02c%03V]%)\ %P
+:map <F3> :set laststatus=0<CR>
+
+"" Automatisches Einruecken und Treppeneffekt beim Copy & Paste verhindern
+:map <F4> :set pastetoggle<CR>
+
+"" Numerierung ein- und ausschalten
+:map <F5> :set number!<CR>
+
+" show tabs, spaces, end of lines
+"set list listchars=tab:»-,trail:·
+:map <F6> :set list listchars=tab:»-,trail:·<CR>
+:map <F7> :set nolist<CR>

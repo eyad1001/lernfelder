@@ -1,0 +1,118 @@
+# Dateiname: .screenrc
+# Speicherort: Homeverzeichnis
+
+# Diese Datei enthaelt Befehle fuer screen. screen fuehrt sie beim starten aus.
+# Jeden dieser Befehle kann man auch benutzen wenn screen schon gestartet ist.
+# Mit <Strg+A :> startet man den Modus, der diese Befehle akzeptiert.
+
+# Mehr Informationen im internen ITE Wiki
+# und unter https://www.gnu.org/software/screen/manual/screen.html
+
+####################################################################
+# hardstatus: Hiermit wird die unterste Zeile schoen farbig gemacht, der Hostname und Uhrzeit und Datum kommen dazu.
+# https://www.gnu.org/software/screen/manual/screen.html#String-Escapes
+# %{} sind farbcommandos
+# %H ist der Hostname
+# %? %? Eine Art if
+# %1` Commando 1 ausfuehren: https://www.gnu.org/software/screen/manual/screen.html#Backtick
+# %= padding (auffuellen mit nichts)
+# %-w %+w Fenster vor bzw nach dem aktuellen Fenster auflisten
+# %n Fensternr
+# %t Fenstertitel
+# %m %d %y %c %A : Monat Tag Jahr Uhrzeit
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%d.%m.%y %{W}%c%{g}]'
+
+####################################################################
+# caption ist das gleiche wie hardstatus, aber fuer die unterregionen wenn man die konsole splittet (siehe unten)
+#
+
+caption splitonly '%{=r dd}%=%{-r}%?%F%{+b yK}%:%{+b wk}%? %n %t%?(%u)%? %{=r dd}%='
+
+####################################################################
+# huge scrollback buffer
+defscrollback 5000
+
+####################################################################
+# no welcome message
+startup_message off
+
+####################################################################
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+####################################################################
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+####################################################################
+# Anfangs geoeffnete Fenster:
+
+# screen -t <fenstername> <fensternummer> <programm>
+
+screen -t zsh  0 zsh
+screen -t browser 1 links https://duckduckgo.com
+screen -t files 2 mc
+screen -t stats 3 htop
+screen -t net 4 nload
+
+# Wieder zum ersten fenster gehen
+select 0
+
+####################################################################
+# 
+
+# Neue Tastenkombination erstellen:
+# bind: <Taste> <Befehl ...>
+
+bind c screen 1 # window numbering starts at 1 not 0
+                # normalerweise ist der standard fuer <Strg+A c> bind c screen 0
+                # dann wird von 0 ausgehend die erste freie nummer gesucht.
+                # Die Nr 0 ist aber unpraktisch beim Screenwechseln <Strg+A 0>
+bind 0 select 10
+
+####################################################################
+# get rid of silly xoff stuff
+bind s split
+
+####################################################################
+# Layout voreinstellungen
+
+# Ein Layout ist eine Fensteranordnung innerhalb von screen. Man kann naemlich die 
+# den Bereich splitten und mehrere Konsolen nebeneinander anzeigen.
+# Die folgenden Befehle erstellen neue layouts, splitten, fokussieren einen anderen
+# splitbereich, splitten nochmal usw. Die Reihenfolge machts hier.
+# Es kann parralel mehrere layouts geben, spaeter werden noch <Strg+F3> und <Strg+F4>
+# definiert um zwischen den Layouts zu wechseln.
+
+
+layout new default
+layout autosave on
+split -v
+resize 50%
+split -h
+select 0
+focus down
+select 1
+focus left
+select 2
+resize 20%
+focus right
+split -h
+select 3
+focus down
+split -h
+select 4
+focus left
+focus up
+layout save default
+layout attach default
+layout select defaulbind = resize =
+
+bind + resize +3
+bind - resize -3
+bind _ resize max
+

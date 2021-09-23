@@ -1,0 +1,107 @@
+nextcloud runterladen
+
+https://www.howtoforge.de/anleitung/wie-man-nextcloud-unter-debian-10-installiert/
+
+https://www.virtualbox.org/wiki/Downloads
+
+https://www.debian.org/download
+
+nameändern oder bennenen
+
+vim /etc/hostname
+vim /etc/hosts
+
+software hineimfügen
+Tasksel
+
+mc      auf die system feile zugreifen 
+
+
+strg+l terminal löschen
+
+su -   user wechseln
+
+apt    install zum installern
+
+/      suchen 
+
+wget   aufruf vom internet
+
+mv     datei verschieben
+
+:wq!   speichern und verlassen
+
+:q!    verlassen
+
+reboot neustarten
+
+strg c stopen
+
+unzip datei entpacken
+
+strg + d abmelden
+
+apt --purge remove apache2  apt autoremove  dinstallern
+
+apt install docker.io docker-compose  docker installiren
+
+vim /etc/hosts  name ändernss
+
+%s/suchwort/ersatzwort7
+
+dG zeilen löschen
+
+less kann datein lessen wenn es gröss ist
+
+
+reboot neustarten
+
+gemeinsme ordner zu erstellen
+
+apt install build-essential module-assistant
+m-a prepare
+mount /media/cdrom
+cd /media/cdrom
+ls
+sh VBOxLinuxadditions.run
+vim /etc/group
+usernamen bei der gruppe vboxsf eintragen
+reboot
+
+chmod rechte ändern
+
+curl vom internet sachen runterladen ohne brwoser
+%5%%%%%%%
+https://github.com/ohmyzsh/ohmyzsh
+
+apt install curl
+
+git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+https://blog.nevercodealone.de/oh-my-zsh-syntax-highlighting-plugin/
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+st klein terminal erzeugen
+
+mkdir source
+cd    source
+git clone https://git.suckless.org/st  
+cd st                   
+su - root werden
+
+apt install libx11-dev libxft-dev
+
+user werden dann st
+
+
+
+
